@@ -1,9 +1,9 @@
 const axios = require('axios');
 
-const ubicacion = require('./controlador/ubicacion');
+const ubicacion = require('./controlador/ubicacion');  //llama a los archivos ubicacion de clima
 const clima = require('./controlador/clima');
 
-const argv = require('yargs').options({
+const argv = require('yargs').options({  //creamos con yargs un comando para ingresar el nombre de la ciudad
     nombre: {
         alias: 'n',
         desc: 'Nombre de la ciudad para obtener el clima',
@@ -17,7 +17,7 @@ const argv = require('yargs').options({
 // clima.getClima(-0.19, -78.5)
 //     .then(console.log);
 
-const getInfo = async(ciudad) => {
+const getInfo = async(ciudad) => { 
     try {
         const coords = await ubicacion.getCiudadLatLon(ciudad);
         const temp = await clima.getClima(coords.lat, coords.lon);
